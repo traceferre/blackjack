@@ -43,15 +43,35 @@ public class GameController
 	@GetMapping("/game-in-progress/double")
 	public String doubleDown(Model model)
 	{
+		ArrayList<String> dealersHand = new ArrayList<String>();
+		dealersHand = currentRound.getDealersHandInWords();
+		
 		int bet = wallet.getBet();
 		wallet.placeBet(-bet);
 		wallet.placeBet(2 * bet);
+		
 		try {
 			currentRound.dealCardToPlayer();
+			
 		} catch (Exception e) {
+			model.addAttribute("wallet", wallet.getWalletTotal());
 			return "game/game-over";
 		}
 		
+		model.addAttribute("bet", wallet.getBet());
+		model.addAttribute("wallet", wallet.getWalletTotal());
+		model.addAttribute("dealerHidden", "Do not show..");
+		model.addAttribute("dealerDisplay", dealersHand.get(1));
+		comp = new Computations();
+		model.addAttribute("dealerTotal", comp.handTotal(currentRound.dealerHand));
+		model.addAttribute("playerTotal", comp.handTotal(currentRound.playerHand));
+		
+		if (currentRound.didPlayerBust())
+		{
+			model.addAttribute("dealerHand", currentRound.getDealersHandInWords());
+			model.addAttribute("playerHand", currentRound.getPlayersHandInWords());
+			return "/game/player-bust";
+		}
 		return "redirect:/game/game-in-progress/stay";
 	}
 	

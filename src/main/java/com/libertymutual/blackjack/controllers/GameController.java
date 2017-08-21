@@ -93,7 +93,7 @@ public class GameController
 		
 		model.addAttribute("bet", wallet.getBet());
 		model.addAttribute("wallet", wallet.getWalletTotal());
-		model.addAttribute("dealerHidden", dealersHand.get(0));
+		model.addAttribute("dealerHidden", "Do not show..");
 		model.addAttribute("dealerDisplay", dealersHand.get(1));
 				
 		try {
@@ -135,7 +135,7 @@ public class GameController
 		
 		model.addAttribute("bet", wallet.getBet());
 		model.addAttribute("wallet", wallet.getWalletTotal());
-		model.addAttribute("dealerHidden", dealersHand.get(0));
+		model.addAttribute("dealerHidden", "Do not show..");
 		model.addAttribute("dealerDisplay", dealersHand.get(1));
 		model.addAttribute("playerHand", round.getPlayersHandInWords());
 		

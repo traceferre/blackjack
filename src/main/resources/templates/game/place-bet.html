@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/site.css">
+    <title>Place Bet</title>
+  </head>
+  <body style="background-image">
+  	<h1>You have ${{ wallet }} remaining</h1>
+  	<h1>Place your bet (min. bet: $5)</h1>
+  	<form method="post" action="/game/game-in-progress/deal-new-hand">
+  	<div>
+  	<input autofocus type="number" min="5" step="5" name="bet" value="0" style="width:100px; height:40px; font-size:24px;" required>
+  	<button>Deal</button>
+  	</div>
+	</form>
+	<br>
+  </body>
+</html>

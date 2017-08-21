@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/site.css">
+    <title>Player Bust</title>
+  </head>
+  <body style="background-image">
+	{{#dealerHand}}
+		<span class="card">{{ . }}</span>
+	{{/dealerHand}}
+	<h3 style="color:white">Dealer's Hand: {{ dealerTotal }}</h3>	
+	<hr>
+	<h3 style="color:white">Your Hand: {{ playerTotal }}</h3>	
+	{{#playerHand}}
+		<span class="card">{{ . }}</span>
+	{{/playerHand}}
+	<br>
+	<span style="color:white">	Current Bet: ${{ bet }}       Total Money: ${{ wallet }}</span>
+	<h1>You Busted!</h1>
+	<br>
+	<form method="post" action="/game/place-bet">
+  	<div><button>Next Hand</button></div>
+	</form>
+  </body>
+</html>

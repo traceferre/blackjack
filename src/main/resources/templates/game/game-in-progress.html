@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/site.css">
+    <title>Game in progress</title>
+  </head>
+  <body style="background-image">
+	<span class="hiddenCard">{{ dealerHidden }}</span>
+	<span class="card">{{ dealerDisplay }}</span> 
+	<h3 style="color:white">Dealer's Hand: ?</h3>	
+	<hr>
+	<h3 style="color:white">Your Hand: {{ playerTotal }}</h3>	
+  	{{#playerHand}}
+		<span class="card">{{ . }}</span>
+	{{/playerHand}}
+	<br>
+	<h3 style="color:white">	Current Bet: ${{ bet }}       Money Left: ${{ wallet }}</h3>
+	<form method="post" action="/game/game-in-progress/hit">
+  	<button>Hit</button>
+  	<br>
+	</form>
+	<form method="get" action="/game/game-in-progress/stay">
+  	<button>Stay</button>
+	</form> 
+	<br>
+  </body>
+</html>
